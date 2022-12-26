@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import model
-from datetime import datetime, date
+from datetime import datetime
 from database import engine, sessionLocal
 from sqlalchemy.orm import Session
 from sqlalchemy import sql
