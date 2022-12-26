@@ -1,5 +1,5 @@
-from sqlalchemy import String, Integer,Column, Date
-from dist.database import base
+from sqlalchemy import String, Integer,Column, Date, Numeric, DECIMAL
+from database import base
 
 
 class User(base):
@@ -13,8 +13,8 @@ class User(base):
 class web_of_100(base):
     __tablename__ = 'person'
     id = Column(Integer, index=True, primary_key=True)
-    name = Column(String)
-    phone = Column(Integer)
+    name = Column(String(255))
+    phone = Column(Numeric(20,10,0,False))
     amount = Column(Integer)
 
 

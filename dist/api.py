@@ -2,11 +2,11 @@ from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-import dist.model as model
+import model as model
 from datetime import datetime
-from dist.database import engine, sessionLocal
+from database import engine, sessionLocal
 from sqlalchemy.orm import Session
-from sqlalchemy import sql
+from sqlalchemy import sql, insert
 
 
 app = FastAPI()
@@ -97,12 +97,7 @@ def save_record(username:str, db:Session = Depends(get_db)):
 def save_person(user:Person, db:Session = Depends(get_db)):
     person_model = db.query(model.web_of_100).filter(model.web_of_100.name == user.name).all()
 
-    person_model = model.web_of_100()
-    person_model.name = user.name
-    person_model.phone = user.phone
-    person_model.amount = user.amount
-
-    db.add(person_model)
+    engine.execute(f"INSERT INTO person (name, phone, amount) VALUES ('{user.name}', {user.phone}, {user.amount})")
     db.commit()
 
 
