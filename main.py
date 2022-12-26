@@ -31,6 +31,8 @@ def get_db():
     try :
         db = sessionLocal()
         yield db
+    except:
+        print('problem')
     finally:
         db.close()
 
