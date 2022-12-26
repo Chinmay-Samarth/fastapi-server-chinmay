@@ -1,4 +1,4 @@
 fastapi
 uvicorn
 sqlalchemy
-vc__handler__python
+psycopg2
