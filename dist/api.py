@@ -39,7 +39,7 @@ def get_db():
 
 class Person(BaseModel):
     name: str
-    phone: int
+    phone: str
     amount: int
 
 class transact(BaseModel):
@@ -96,8 +96,8 @@ def save_record(username:str, db:Session = Depends(get_db)):
 @app.post('/user')
 def save_person(user:Person, db:Session = Depends(get_db)):
     person_model = db.query(model.web_of_100).filter(model.web_of_100.name == user.name).all()
-
-    engine.execute(f"INSERT INTO person (name, phone, amount) VALUES ('{user.name}', {user.phone}, {user.amount})")
+    user.phone = str(user.phone)
+    engine.execute(f"INSERT INTO person (name, phone, amount) VALUES ('{user.name}', '{user.phone}', {user.amount})")
     db.commit()
 
 

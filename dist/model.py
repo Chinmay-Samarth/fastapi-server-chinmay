@@ -1,4 +1,4 @@
-from sqlalchemy import String, Integer,Column, Date, Numeric, DECIMAL
+from sqlalchemy import String, Integer,Column, Date, Numeric, Text
 from database import base
 
 
@@ -14,7 +14,7 @@ class web_of_100(base):
     __tablename__ = 'person'
     id = Column(Integer, index=True, primary_key=True)
     name = Column(String(255))
-    phone = Column(Numeric(20,10,0,False))
+    phone = Column(Text)
     amount = Column(Integer)
 
 
