@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
 from sqlalchemy.orm import Session
-from sqlalchemy import sql
 import project.model as model
 from project.database import engine, sessionLocal
 
@@ -24,8 +23,6 @@ app.add_middleware(
 model.base.metadata.create_all(bind=engine)
 
 
-
-d = sql.sqltypes.DATE
 
 def get_db():
     try :
