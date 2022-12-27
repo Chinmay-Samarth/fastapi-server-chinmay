@@ -4,8 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from datetime import datetime
 from sqlalchemy.orm import Session
-import project.model as model
-from project.database import engine, sessionLocal
+import model
+from database import engine,sessionLocal
 
 
 app = FastAPI()
